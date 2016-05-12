@@ -1,0 +1,6 @@
+Dataset		t1		t2		t3
+Parallel	11,012		114,673		18,117,012
+Serial 		47,998		3,549,724	270,494,610
+Speedup		4.35		30.95		14.93
+
+//Before the write/read optimization

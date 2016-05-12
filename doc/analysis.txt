@@ -1,0 +1,27 @@
+The algorithm is done officially in 5 step.
+
+Step 1: Create a new directed graph T_D from T (The input is already given in this format).  
+
+Step 2: For every directed edge in the graph create a pointer to the next directed edge.
+
+Step 3: Set the first incoming edge to the root to be NIL.
+
+Step 4: Apply list ranking algorithm to every edge in the graph.
+
+Step 5: For every edge compare the number assigned in step 4 with it’s antiparallel edge the edge with smaller number is toward the root.
+
+Now we look at the complexity of each of the steps. 
+
+Step 1 is almost immediate because the format of the input is in a way that we can access an edge (array E) and it’s parallel anti edge (pointer to parallel edge is in ptr) from the given array.
+
+Step 2 we do it in the spawn of M thread and for each pointer creation we need 3 command so it takes O(1) time and O(M) work.
+
+Step 3 is O(1) time and work.
+
+Step 4 is done for finding list ranking of each edge. It take log(M) time which in each step we set the rank and next pointer of each element. It takes O(log(M)) time and O(M(log(M))) work. The amount of work is M*log(M) because for each element we have comparison of its next pointer to check if it’s NIL or not. 
+
+Step 5 is also a comparison for each edge which is done is O(1) time for all the edges in O(M) work.
+
+In total the algorithm needs O(log(M)) time and O(M*log(M)) work.
+
+I saw a speedup of 4.35 for t1, 30.95 for t2 and 14.93 for t3. It is kind of weird that my best speedup happens for case t2 but that can be because of the way that graph is connected. I actually don’t have a good explanation for this observation. 
